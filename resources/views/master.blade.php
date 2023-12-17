@@ -25,11 +25,11 @@
         }
 
         .navbar-dark .navbar-nav .nav-link {
-            color: #fff;
+            color: #ffffff;
         }
 
         .navbar-dark .navbar-toggler-icon {
-            background-color: #fff;
+            background-color: #ffffff;
         }
 
         /* Add more custom styles as needed */
@@ -38,7 +38,7 @@
 
 <body>
     <div class="container-fluid ">
-        <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark border-bottom shadow-sm">
             <a class="navbar-brand" href="{{ route('home') }}">Aplikasi Pendataan Mahasiswa</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,15 +59,7 @@
                                 <a class="dropdown-item" href="{{ route('admin.users.index') }}">User List</a>
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="formDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Form Mahasiswa
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="formDropdown">
-                                <a class="dropdown-item" href="{{ route('form-mahasiswa') }}">Input Mahasiswa</a>
-                            </div>
-                        </li>
+                        
                     @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('form-mahasiswa') }}">Input Mahasiswa</a>
@@ -89,7 +81,7 @@
                 </ul>
             </div>
         </nav>
-
+        
         @yield('konten')
         
         
