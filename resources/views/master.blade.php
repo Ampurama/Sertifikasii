@@ -20,7 +20,7 @@
         }
 
         .navbar-brand {
-            font-size: 24px;
+            font-size: 15px;
             font-weight: bold;
         }
 
@@ -34,10 +34,11 @@
 
         /* Add more custom styles as needed */
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
-<body>
-    <div class="container-fluid ">
+<body >
+    <div class="container-xxl ">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark border-bottom shadow-sm">
             <a class="navbar-brand" href="{{ route('home') }}">Aplikasi Pendataan Mahasiswa</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -71,8 +72,7 @@
                             <i class="fa fa-user"></i> {{ Auth::user()->email }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                            <a class="dropdown-item">Level: {{ Auth::user()->admin }}</a>
-                            <div class="dropdown-divider"></div>
+                            <div class="dropdown"></div>
                             <a class="dropdown-item" href="{{ route('actionlogout') }}">
                                 <i class="fa fa-power-off"></i> Log Out
                             </a>
@@ -91,6 +91,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
 </body>
+
 
 </html>

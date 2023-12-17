@@ -6,7 +6,8 @@ use App\Models\Regions;
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
 use App\Models\Province;
-use Barryvdh\DomPDF\Facade as PDF;
+use PDF;
+
 
 
 
@@ -14,7 +15,7 @@ class MahasiswaController extends Controller
 {
     public function store(Request $request)
     {
-        // Validasi data yang diterima dari form
+
         $request->validate([
             'namaLengkap' => 'required|string|max:255',
             'alamatktp' => 'required|string|max:255',
@@ -32,7 +33,7 @@ class MahasiswaController extends Controller
             'agama' => 'required|string',
         ]);
 
-        // Buat objek Mahasiswa dan isi dengan data dari request
+
         $mahasiswa = new Mahasiswa([
             'namaLengkap' => $request->input('namaLengkap'),
             'alamatktp' => $request->input('alamatktp'),
@@ -51,15 +52,22 @@ class MahasiswaController extends Controller
             'user_id' => $request->input('user_id'),
         ]);
         if ($request->input('kewarganegaraan') === 'WNA') {
-            // Jika ya, tambahkan data asal WNA
+
             $mahasiswa['asalWNA'] = $request->input('asalWNA');
         }
-
-        // Simpan data ke database
         $mahasiswa->save();
+        
+        $pdf = PDF::loadView('pages.template', ['data' => $mahasiswa]);
 
-        // Redirect ke halaman yang sesuai setelah penyimpanan data
-        return back()->with('success', 'Data mahasiswa berhasil disimpan.');
+        
+        $pdfFileName = 'mahasiswa_' . time() . '.pdf';
+
+        
+        return $pdf->download($pdfFileName);
+        
+
+
+        
     }
     public function getKabupaten($provinsiId)
     {
@@ -77,7 +85,7 @@ class MahasiswaController extends Controller
         $mahasiswa = Mahasiswa::all();
 
 
-        return view('pages.data-mahasiswa', compact('mahasiswa'));
+        return view('pages.admin.data-mahasiswa', compact('mahasiswa'));
 
 
     }
@@ -85,18 +93,28 @@ class MahasiswaController extends Controller
     {
         $mahasiswa = Mahasiswa::findOrFail($id);
         $provinces = Province::all();
-        return view('pages.edit-mahasiswa', compact('mahasiswa'));
+        return view('pages.admin.edit-mahasiswa', compact('mahasiswa'));
     }
 
 
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'nim' => 'required|max:20',
-            'nama' => 'required',
-            'fakultas' => 'required',
-            'prodi' => 'required',
+            'namaLengkap' => 'required',
+            'alamatktp' => 'required',
+            'alamat' => 'required',
+            'provinsi' => 'required',
+            'kabupaten' => 'required',
+            'kecamatan' => 'required',
+            'nomortlp' => 'required',
+            'nomorhp' => 'required',
             'email' => 'required|email',
+            'kewarganegaraan' => 'required',
+            'asalWNA' => 'nullable', // You can add validation rules for this if needed
+            'tanggallahir' => 'required|date',
+            'tempatlahir' => 'required',
+            'statusMenikah' => 'required',
+            'agama' => 'required',
         ]);
 
         Mahasiswa::whereId($id)->update($validatedData);

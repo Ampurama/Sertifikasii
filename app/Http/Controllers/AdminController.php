@@ -26,13 +26,14 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            // Add more validation rules as needed
+            'admin' => 'boolean', 
         ]);
 
         $user->update([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            // Update other user attributes here
+            'admin' => $request->has('admin') ? 'True' : 'False',
+            
         ]);
 
         return redirect('/admin/users')->with('success', 'User updated successfully.');

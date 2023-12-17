@@ -31,16 +31,16 @@ class LoginController extends Controller
                 return redirect('data-mahasiswa');
             }
 
-            return redirect('home');
+            return redirect('home')->with('success', 'Login successful.');
         }
         Session::flash('status', 'failed');
-        Session::flash('message', 'proses login gagal');
+        Session::flash('message', 'proses login gagal, Email atau Password salah');
         return redirect('/login');
     }
 
     public function actionlogout()
     {
         Auth::logout();
-        return redirect('login');
+        return redirect('login')->with('success','Berhasil Logout');
     }
 }

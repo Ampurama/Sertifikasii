@@ -4,35 +4,40 @@
     <div class="container">
         <h1>User List</h1>
         @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: '{{ session('success') }}',
+                    showConfirmButton: false, // Remove the "OK" button
+                    timer: 1000 // Set the duration in milliseconds (e.g., 3 seconds)
+                });
+            </script>
         @endif
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($users as $user)
-                    <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>
+        <div class="row">
+            @foreach ($users as $user)
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $user->name }}</h5>
+                            <p class="card-text">Email: {{ $user->email }}</p>
+                            <p class="card-text">
+                                @if ($user->admin === 'True')
+                                    Admin
+                                @else
+                                    User
+                                @endif
+                            </p>
                             <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary">Edit</a>
                             <form class="d-inline" method="POST" action="{{ route('admin.users.destroy', $user->id) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 @endsection

@@ -4,9 +4,14 @@
     <div class="container">
         <h1>Edit User</h1>
         @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: '{{ session('success') }}',
+                    showConfirmButton: false, // Remove the "OK" button
+                    timer: 1000 // Set the duration in milliseconds (e.g., 3 seconds)
+                });
+            </script>
         @endif
 
         <form method="POST" action="{{ route('admin.users.update', $user->id) }}">
@@ -23,8 +28,15 @@
                 <input type="email" class="form-control" id="email" name="email"
                     value="{{ old('email', $user->email) }}">
             </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="admin" name="admin" value="1"
+                        @if ($user->admin) checked @endif>
+                    <label class="form-check-label" for="admin">Admin</label>
+                </div>
+            </div>
 
-            {{-- Add more form fields for other user attributes here --}}
+
 
             <button type="submit" class="btn btn-primary">Update User</button>
         </form>
