@@ -9,7 +9,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
     <style>
-        /* Custom Styles */
+       
         body {
             background-color: #f8f9fa;
         }
@@ -32,7 +32,7 @@
             background-color: #ffffff;
         }
 
-        /* Add more custom styles as needed */
+       
     </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>

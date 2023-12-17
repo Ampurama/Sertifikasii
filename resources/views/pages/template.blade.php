@@ -4,7 +4,7 @@
     <title>PDF Template</title>
 </head>
 <body>
-    <!-- Your PDF content goes here -->
+    
     <h1>Data Mahasiswa</h1>
     <p>Name: {{ $data->namaLengkap }}</p>
     <p>Address: {{ $data->alamat }}</p>
@@ -16,6 +16,6 @@
     <p>tempat lahir: {{ $data->tempatlahir }}</p>
     <p>status Menikah: {{ $data->statusMenikah }}</p>
     <p>agama: {{ $data->agama }}</p>
-    <!-- Add more data fields as needed -->
+    
 </body>
 </html>

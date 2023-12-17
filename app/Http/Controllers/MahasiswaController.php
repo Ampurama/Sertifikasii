@@ -110,7 +110,7 @@ class MahasiswaController extends Controller
             'nomorhp' => 'required',
             'email' => 'required|email',
             'kewarganegaraan' => 'required',
-            'asalWNA' => 'nullable', // You can add validation rules for this if needed
+            'asalWNA' => 'nullable', 
             'tanggallahir' => 'required|date',
             'tempatlahir' => 'required',
             'statusMenikah' => 'required',

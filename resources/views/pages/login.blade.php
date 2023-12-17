@@ -21,7 +21,7 @@
             padding: 20px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             background-color: rgba(255, 255, 255, 0.8);
-            /* Add this line to set a white background */
+            
         }
 
         .container {

@@ -19,6 +19,8 @@ use App\Http\Controllers\AdminController;
 |
 */
 
+
+/*User rolee */
 Route::get('login', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
 
@@ -34,6 +36,7 @@ Route::get('/get-kabupaten/{provinsiId}', [MahasiswaController::class, 'getKabup
 Route::get('/form-mahasiswa', [MahasiswaController::class, 'create'])->name('form-mahasiswa');
 
 
+/*Admin Role */
 Route::get('data-mahasiswa', [MahasiswaController::class, 'index'])
     ->name('data-mahasiswa')->middleware('admin');
 Route::get('edit-mahasiswa/{id}', [MahasiswaController::class, 'edit'])

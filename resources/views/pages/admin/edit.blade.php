@@ -8,8 +8,8 @@
                 Swal.fire({
                     icon: 'success',
                     title: '{{ session('success') }}',
-                    showConfirmButton: false, // Remove the "OK" button
-                    timer: 1000 // Set the duration in milliseconds (e.g., 3 seconds)
+                    showConfirmButton: false, 
+                    timer: 1000 
                 });
             </script>
         @endif

@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Regions extends Model
 {
     use HasFactory;
-    protected $table = 'regions'; // Nama tabel di database
+    protected $table = 'regions'; 
 
     protected $fillable = [
-        'name', 'province_id', // dan kolom lain yang Anda ingin gunakan
+        'name', 'province_id', 
     ];
 
     public function province()
